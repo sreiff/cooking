@@ -2,10 +2,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Dinner Time</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
+     <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/jquery-ui.min.js"></script>
+    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>>
+    
+     <script>
+        function newDoc()
+        {
+            window.location.href = "home.php";
+        }
+    </script>
+    
 </head>
 <body>
      <div id="container">
@@ -68,7 +78,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $q = "INSERT INTO users (name, email, pass, registration_date) VALUES ('$fn', '$e', SHA1('$p'), NOW() )";        
         $r = @mysqli_query ($dbc, $q); 
         if ($r) { // If it ran OK.
-            header('Location: home.php');
+            ?>
+            <script type="text/javascript">
+                newDoc();
+            </script>
+            <?
         } else { // If it did not run OK.
             
             // Public message:

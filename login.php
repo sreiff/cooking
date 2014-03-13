@@ -3,9 +3,18 @@
     <meta charset="UTF-8">
     <title>Dinner Time</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="redirect.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/jquery-ui.min.js"></script>
+    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>>
+    
+    <script>
+        function newDoc()
+        {
+            window.location.href = "home.php";
+        }
+    </script>
 
 </head>
 <body>
@@ -13,14 +22,14 @@
 <?php # Script 9.5 - register.php #2
 // This script performs an INSERT query to add a record to the users table.
 
-$page_title = 'Register';
+$page_title = 'Log in';
 
 
 // Connect to MySQL.    
     require ('../../mysqli_connect.php');
     
 // Select the database:
-    $q = "USE cooking";    
+    $q = "USE jetpack";    
     $r = @mysqli_query ($dbc, $q); 
 
 
@@ -53,7 +62,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $r = @mysqli_query ($dbc, $q);
         $n = mysqli_num_rows($r);
         if ($n==1) { // If it ran OK.
-            header('Location: http://savannahreiff.com/cooking/home.php');
+            ?>
+            <script type="text/javascript">
+                newDoc();
+            </script>
+            <?
+            //header('Location: home.php');
         } else { // If it did not run OK.
             
             // Public message:
