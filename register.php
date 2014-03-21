@@ -1,3 +1,6 @@
+ <?
+ session_start();
+ ?>
  <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,9 +13,9 @@
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>>
     
      <script>
-        function newDoc()
+        function newDoc(x)
         {
-            window.location.href = "home.php";
+            window.location.href = x;
         }
     </script>
     
@@ -23,13 +26,13 @@
 // This script performs an INSERT query to add a record to the users table.
 
 $page_title = 'Register';
-
+include("passwords.php");
 
 // Connect to MySQL.    
     require ('../../mysqli_connect.php');
     
 // Select the database:
-    $q = "USE cooking";    
+    $q = "USE jetpack";    
     $r = @mysqli_query ($dbc, $q); 
 
 
@@ -76,11 +79,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Register the user in the database...
         // Run the query.
         $q = "INSERT INTO users (name, email, pass, registration_date) VALUES ('$fn', '$e', SHA1('$p'), NOW() )";        
-        $r = @mysqli_query ($dbc, $q); 
-        if ($r) { // If it ran OK.
+        $r = @mysqli_query ($dbc, $q);
+        $q3 = "UPDATE session SET user = '$e' WHERE user_id = 1";        
+        $r3 = @mysqli_query ($dbc, $q3);
+        
+        if ($r && $r3) { // If it ran OK.
+            $_SESSION["logged"]=$_POST['email'];
             ?>
             <script type="text/javascript">
-                newDoc();
+                newDoc("home.php");
             </script>
             <?
         } else { // If it did not run OK.

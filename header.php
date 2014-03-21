@@ -1,3 +1,6 @@
+<?
+ session_start();
+ ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,40 +28,92 @@
     <style>
   .ui-menu { width: 150px; }
   </style>
+    
+    <script>
+        function newDoc(x)
+        {
+            window.location.href = x;
+        }
+    </script>
 
     
 </head> 
 
     <body>
-    <div id="logout"><a href="logout.php">Logout</a></div>
+    <div id="logout"><a href="logout.php">Logout</a>
+    <?
+    //$y = $_SESSION["logged"];
+    //echo $y;
+    //echo "here";
+    ?>
+    </div>
+    
     <div class="navbar">
         <ul id="menu" class="navbar">
             <li>
                 <a href="home.php">Home</a>
             </li>
             <li>
+                <a href="allrecipes.php" >All Recipes</a>
+                <ul id="submenu">
+                    <li>
+                        <a href="allrecipes.php?category=all" >All</a>
+                        
+                    </li>
+                    <li>
+                        <a href="allrecipes.php?category=breakfast">Breakfast</a>
+                        
+                    </li>
+                    <li>
+                        <a href="allrecipes.php?category=lunch">Lunch</a>
+                        
+                    </li>
+                    <li>
+                        <a href="allrecipes.php?category=snacks">Snacks</a>
+                    </li>
+                    <li>
+                        <a href="allrecipes.php?category=dinner" >Dinner</a>
+                    </li>
+                    <li>
+                        <a href="allrecipes.php?category=desserts" >Dessert</a>
+                    </li>
+                    <li>
+                        <a href="allrecipes.php?category=drinks" >Drinks</a>
+                    </li>
+                    <li>
+                        <a href="allrecipes.php?category=other" >Other</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
                 <a href="myrecipes.php" >My Recipes</a>
                 <ul id="submenu">
                     <li>
-                        <a href="myrecipes.php" >Breakfast</a>
+                        <a href="allrecipes.php?category=all" >All</a>
+                        
                     </li>
                     <li>
-                        <a href="myrecipes.php" >Lunch</a>
+                        <a href="allrecipes.php?category=breakfast">Breakfast</a>
+                        
                     </li>
                     <li>
-                        <a href="myrecipes.php" >Snacks</a>
+                        <a href="allrecipes.php?category=lunch">Lunch</a>
+                        
                     </li>
                     <li>
-                        <a href="myrecipes.php" >Dinner</a>
+                        <a href="allrecipes.php?category=snacks">Snacks</a>
                     </li>
                     <li>
-                        <a href="myrecipes.php" >Dessert</a>
+                        <a href="allrecipes.php?category=dinner" >Dinner</a>
                     </li>
                     <li>
-                        <a href="myrecipes.php" >Drinks</a>
+                        <a href="allrecipes.php?category=desserts" >Dessert</a>
                     </li>
                     <li>
-                        <a href="myrecipes.php" >Other</a>
+                        <a href="allrecipes.php?category=drinks" >Drinks</a>
+                    </li>
+                    <li>
+                        <a href="allrecipes.php?category=other" >Other</a>
                     </li>
                 </ul>
             </li>
@@ -73,6 +128,7 @@
             </li>
     </div>
     
+    <h1>Hungry People Meal Planner</h1>
     <div id="container">
         
         <body>

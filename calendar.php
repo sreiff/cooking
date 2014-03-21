@@ -1,4 +1,10 @@
-    
+<?php 
+session_start(); /// initialize session 
+include("passwords.php"); 
+check_logged(); /// function checks if visitor is logged. 
+//If user is not logged the user is redirected to login.php page  
+?> 
+
 <?php include 'header.php'; ?>
     
     
@@ -15,7 +21,7 @@ $monthNames = Array("January", "February", "March", "April", "May", "June", "Jul
 ?>
 
 <?php
-if (!isset($_REQUEST["month"])) $_REQUEST["month"] = date("n");
+if (!isset($_REQUEST["month"])) $_REQUEST["month"] = date("m");
 if (!isset($_REQUEST["year"])) $_REQUEST["year"] = date("Y");
 ?>
 
@@ -71,10 +77,10 @@ $maxday = date("t",$timestamp);
 $thismonth = getdate ($timestamp);
 $startday = $thismonth['wday'];
 for ($i=0; $i<($maxday+$startday); $i++) {
-    if(($i % 7) == 0 ) echo "<tr>n";
-    if($i < $startday) echo "<td></td>n";
+    if(($i % 7) == 0 ) echo "<tr>";
+    if($i < $startday) echo "<td></td>";
     else echo "<td align='center' valign='middle' height='20px'>". ($i - $startday + 1) . "</td>n";
-    if(($i % 7) == 6 ) echo "</tr>n";
+    if(($i % 7) == 6 ) echo "</tr>";
 }
 ?>
 

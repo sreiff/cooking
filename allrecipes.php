@@ -8,7 +8,7 @@ check_logged(); /// function checks if visitor is logged.
 <?php include 'header.php'; ?>
     
     
-   Here you will have the ability to store your recipes.
+   Here you will have the ability to look at all recipes.
    <br>
     <br>
     You can even sort your recipes by type: Breakfast, Lunch, Snacks, Dinner, Desserts, Drinks, Other.
@@ -33,28 +33,14 @@ check_logged(); /// function checks if visitor is logged.
     // Assign the input value to a variable for easy reference
     $cat = $_REQUEST["category"];
     //echo $cat;
+    //Check if category if all, otherwise use input value
     if($cat == 'all' or $cat == ''){
              $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes";
           } else{
             $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes WHERE category = '$cat'";
           }
     $r2 = @mysqli_query ($dbc, $q2);
-/*
-    $q1 = "select category from session where user_id = 1";
-    $r3 = @mysqli_query ($dbc, $q1);
-    $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes";
-     
-     if($r3){
-        $cat = mysqli_fetch_row($r3);
-        if(!($cat == '*')){
-             $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes WHERE category = '$cat'";
-          }
-     }
-     
-     $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes"; //WHERE category = '$cat'";        
-     $r2 = @mysqli_query ($dbc, $q2);
-     */
-     
+
      if ($r2) { // If it ran OK, display the records.
 
      while ($row = mysqli_fetch_row($r2)) {
@@ -77,8 +63,6 @@ check_logged(); /// function checks if visitor is logged.
         $link = "{$row[4]}";
         echo "<a href='$link'>Source</a>";
         }
-     
-        //echo $cat;
 
         // Free up the resources.
         mysqli_free_result ($r2);

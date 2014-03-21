@@ -1,3 +1,7 @@
+ <?
+ session_start();
+ ?>
+ 
  <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,9 +14,9 @@
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>>
     
     <script>
-        function newDoc()
+        function newDoc(x)
         {
-            window.location.href = "home.php";
+            window.location.href = x;
         }
     </script>
 
@@ -24,6 +28,7 @@
 
 $page_title = 'Log in';
 
+include("passwords.php");
 
 // Connect to MySQL.    
     require ('../../mysqli_connect.php');
@@ -61,10 +66,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $q = "SELECT user_id FROM users WHERE (email='$e' AND pass=SHA1('$p') )";        
         $r = @mysqli_query ($dbc, $q);
         $n = mysqli_num_rows($r);
-        if ($n==1) { // If it ran OK.
+        
+        $q3 = "UPDATE session SET user = '$e' WHERE user_id = 1";        
+        $r3 = @mysqli_query ($dbc, $q3);
+        if ($n==1 && $r3) { // If it ran OK.
+            
+            
+             $_SESSION["logged"]=$_POST['email'];
             ?>
             <script type="text/javascript">
-                newDoc();
+                newDoc("home.php");
             </script>
             <?
             //header('Location: home.php');
