@@ -5,12 +5,27 @@
         }
     </script>
 
-<div id="container">
 
 <?php
 session_start();
-//$_SESSION["logged"]='out';
+//include 'password.php';
+$_SESSION["logged"] = '0';
+//check_logged();
+//session_unset();
+//session_destroy();
+?>
+<script> 
+    newDoc("login.php");
+</script>
 
+<?
+
+//echo 'you are logged out';
+
+//newDoc("login.php");
+
+//$_SESSION["logged"]='out';
+/*
 require ('../../mysqli_connect.php');
     
 // Select the database:
@@ -28,7 +43,7 @@ require ('../../mysqli_connect.php');
         </script>
           <?
      }
-
+*/
 ?>
     
 

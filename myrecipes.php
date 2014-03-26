@@ -32,11 +32,13 @@ check_logged(); /// function checks if visitor is logged.
  
     // Assign the input value to a variable for easy reference
     $cat = $_REQUEST["category"];
+    $user_id = $_SESSION["logged"];
+    
     //echo $cat;
     if($cat == 'all' or $cat == ''){
-             $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes";
+             $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes WHERE users like '%$user_id%'";
           } else{
-            $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes WHERE category = '$cat'";
+            $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes WHERE category = '$cat' and users like '%$user_id%'";
           }
     $r2 = @mysqli_query ($dbc, $q2);
 /*

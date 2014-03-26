@@ -16,7 +16,12 @@ check_logged(); /// function checks if visitor is logged.
     find new recipes, create a grocery list and more. 
     <br>
         <br>
+            <a href="http://savannahreiff.com/cooking/Find_New_Recipes.xml">
+            <img src="images/rss.gif" width="36" height="14">
+            </a>
             <br>
+                
+                
 <?php include 'footer.php'; ?>
     
 </body>

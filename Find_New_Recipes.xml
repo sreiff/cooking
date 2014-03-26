@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+<channel>
+<title>Find_New_Recipes</title>
+<link>http://www.savannahreiff.com/cooking/home.php</link>
+<description>Find new recipes as they are added to our site.</description>
+
+<item>
+<title>BBQ Chicken Pizza</title>
+<link>http://savannahreiff.com/cooking/allrecipes.php?recipe=bbqchicken.jpg</link>
+<description>BBQ Chicken Pizza recipe</description>
+</item>
+
+<item>
+<title>Blueberry Spinach Smoothie</title>
+<link>http://savannahreiff.com/cooking/allrecipes.php?recipe=blueberryspinachsmoothie.jpg</link>
+<description>Blueberry Spinach Smoothie Recipe</description>
+</item>
+
+<item>
+<title>Cinnamon Roll Pancakes</title>
+<link>http://savannahreiff.com/cooking/allrecipes.php?recipe=CinnamonRollPancakes.jpg</link>
+<description>Cinnamon Roll Pancakes Recipe</description>
+</item>
+
+<item>
+<title>Oatmeal MandM Cookies</title>
+<link>http://savannahreiff.com/cooking/allrecipes.php?recipe=oatmealmmcookies.jpg</link>
+<description>Oatmeal MandM Cookies Recipe</description>
+</item>
+
+<item>
+<title>Oven Tacos</title>
+<link>http://savannahreiff.com/cooking/allrecipes.php?recipe=oventacos.jpg</link>
+<description>Oven Tacos Recipe</description>
+</item>
+
+</channel>
+</rss>

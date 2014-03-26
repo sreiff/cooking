@@ -6,12 +6,13 @@
     </script>
 
 <?php 
-//session_start();
+
 
 function check_logged(){
+     session_start();
      // Connect to MySQL.    
-    require ('../../mysqli_connect.php');
-    
+    //require ('../../mysqli_connect.php');
+   /* 
 // Select the database:
     $q = "USE jetpack";    
     $r = @mysqli_query ($dbc, $q); 
@@ -31,11 +32,17 @@ function check_logged(){
           }
           //header("Location: login.php");
      }
-     
+     */
      //global $_SESSION;
-     //$x = $_SESSION["logged"];
-     //if ($x = 'out') {
+     $x = $_SESSION["logged"];
+     if ($x == '0' or $x == '') {
+          //echo "here!!!";
+           ?>
+            <script>
+               newDoc("login.php");
+            </script>
+            <?
           //header("Location: login.php"); 
-     //}; 
+     }; 
 }; 
 ?>

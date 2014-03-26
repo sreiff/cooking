@@ -42,8 +42,8 @@
     <body>
     <div id="logout"><a href="logout.php">Logout</a>
     <?
-    //$y = $_SESSION["logged"];
-    //echo $y;
+    $y = $_SESSION["logged"];
+    echo $y;
     //echo "here";
     ?>
     </div>
@@ -89,31 +89,31 @@
                 <a href="myrecipes.php" >My Recipes</a>
                 <ul id="submenu">
                     <li>
-                        <a href="allrecipes.php?category=all" >All</a>
+                        <a href="myrecipes.php?category=all" >All</a>
                         
                     </li>
                     <li>
-                        <a href="allrecipes.php?category=breakfast">Breakfast</a>
+                        <a href="myrecipes.php?category=breakfast">Breakfast</a>
                         
                     </li>
                     <li>
-                        <a href="allrecipes.php?category=lunch">Lunch</a>
+                        <a href="myrecipes.php?category=lunch">Lunch</a>
                         
                     </li>
                     <li>
-                        <a href="allrecipes.php?category=snacks">Snacks</a>
+                        <a href="myrecipes.php?category=snacks">Snacks</a>
                     </li>
                     <li>
-                        <a href="allrecipes.php?category=dinner" >Dinner</a>
+                        <a href="myrecipes.php?category=dinner" >Dinner</a>
                     </li>
                     <li>
-                        <a href="allrecipes.php?category=desserts" >Dessert</a>
+                        <a href="myrecipes.php?category=desserts" >Dessert</a>
                     </li>
                     <li>
-                        <a href="allrecipes.php?category=drinks" >Drinks</a>
+                        <a href="myrecipes.php?category=drinks" >Drinks</a>
                     </li>
                     <li>
-                        <a href="allrecipes.php?category=other" >Other</a>
+                        <a href="myrecipes.php?category=other" >Other</a>
                     </li>
                 </ul>
             </li>

@@ -11,7 +11,7 @@
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/jquery-ui.min.js"></script>
     <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     
     <script>
         function newDoc(x)
@@ -25,7 +25,8 @@
      <div id="container">
 <?php # Script 9.5 - register.php #2
 // This script performs an INSERT query to add a record to the users table.
-
+$y = $_SESSION["logged"];
+//echo $y;
 $page_title = 'Log in';
 
 include("passwords.php");
@@ -86,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p class="error">You could not be registered due to a system error. We apologize for any inconvenience.</p>'; 
             
             // Debugging message:
-            echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q . '</p>';
+           // echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q . '</p>';
                         
         } // End of if ($r) IF.
         
@@ -110,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 } // End of the main Submit conditional.
 ?>
-<h1>Register</h1>
+<h1>Log In</h1>
 <form action="login.php" method="post">
     <p>Email Address: <input type="text" name="email" size="20" maxlength="60" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"  /> </p>
     <p>Password: <input type="password" name="pass1" size="10" maxlength="20" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>"  /></p>
@@ -119,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <a href="register.php">New User</a>
 <br>
     <br>
-Note: for testing purposes you can use the email root@root.com and password root.
+
 
     
 </body> 
