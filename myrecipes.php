@@ -33,13 +33,20 @@ check_logged(); /// function checks if visitor is logged.
     // Assign the input value to a variable for easy reference
     $cat = $_REQUEST["category"];
     $user_id = $_SESSION["logged"];
+    $rec = $_REQUEST["recipe"];
     
-    //echo $cat;
+    
+    //Check if category if all, otherwise use input value
     if($cat == 'all' or $cat == ''){
              $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes WHERE users like '%$user_id%'";
           } else{
             $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes WHERE category = '$cat' and users like '%$user_id%'";
           }
+          
+    if(!$rec == ''){
+        $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes WHERE image_url = '$rec' and users like '%$user_id%'";
+    }
+
     $r2 = @mysqli_query ($dbc, $q2);
 /*
     $q1 = "select category from session where user_id = 1";
@@ -66,7 +73,7 @@ check_logged(); /// function checks if visitor is logged.
         
         $name = "{$row[0]}";
         $image = "{$row[1]}";
-        echo "<h2><a href='allrecipes.php?recipe=$image'>$name</a></h2>";
+        echo "<h2><a href='myrecipes.php?recipe=$image'>$name</a></h2>";
         
         echo "<img src='images/$image' alt='$name' width='25%'>\n";
         ?>

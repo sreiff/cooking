@@ -1,3 +1,9 @@
+<?php 
+session_start(); /// initialize session 
+include("passwords.php"); 
+check_logged(); /// function checks if visitor is logged. 
+//If user is not logged the user is redirected to login.php page  
+?>
 <script>
 $( "#button" ).button();
 </script>

@@ -14,7 +14,7 @@ foreach($_POST as $key => $value) {
   if(ini_get('magic_quotes_gpc'))
     $_POST[$key] = stripslashes($_POST[$key]);
  
-  $_POST[$key] = htmlspecialchars(strip_tags($_POST[$key]));
+    $_POST[$key] = htmlspecialchars(strip_tags($_POST[$key]));
 }
 
 $user_id = $_SESSION["logged"];

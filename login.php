@@ -68,9 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $r = @mysqli_query ($dbc, $q);
         $n = mysqli_num_rows($r);
         
-        $q3 = "UPDATE session SET user = '$e' WHERE user_id = 1";        
-        $r3 = @mysqli_query ($dbc, $q3);
-        if ($n==1 && $r3) { // If it ran OK.
+        if ($n==1) { // If it ran OK.
             
             
              $_SESSION["logged"]=$_POST['email'];

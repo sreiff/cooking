@@ -20,6 +20,8 @@ check_logged(); /// function checks if visitor is logged.
             <img src="images/rss.gif" width="36" height="14">
             </a>
             <br>
+            <br> <br>
+            <h2><a href="upload.php">Upload a New Recipe!</a></h2>
                 
                 
 <?php include 'footer.php'; ?>
