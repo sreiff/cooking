@@ -1,11 +1,12 @@
 
-<?php 
+<?php
 session_start(); /// initialize session 
 include("passwords.php"); 
 check_logged(); /// function checks if visitor is logged. 
 //If user is not logged the user is redirected to login.php page  
 ?> 
-    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+
 <?php include 'header.php'; ?>
     
     Welcome to the recipe/dinner tracking site!
@@ -22,8 +23,9 @@ check_logged(); /// function checks if visitor is logged.
             <br>
             <br> <br>
             <h2><a href="upload.php">Upload a New Recipe!</a></h2>
-                
-                
+            <br> <br>
+    
+          
 <?php include 'footer.php'; ?>
     
 </body>

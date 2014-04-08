@@ -154,9 +154,12 @@ table {
 	left: 10px;
         z-index: 1000;
   }
+  
 
 
-/* calendar code edited from from http://davidwalsh.name/php-event-calendar */
+
+
+/* calendar code adapted from from http://davidwalsh.name/php-event-calendar */
 table.calendar		{ border-left:1px solid #999; }
 tr.calendar-row	{  }
 td.calendar-day	{ min-height:80px; font-size:11px; position:relative; } * html div.calendar-day { height:80px; }

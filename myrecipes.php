@@ -8,12 +8,12 @@ check_logged(); /// function checks if visitor is logged.
 <?php include 'header.php'; ?>
     
     
-   Here you will have the ability to store your recipes.
+   Below are all of your saved recipes. <br><br>
+   To save a recipe, find one you like under all recipes and select the title to display it alone. 
+   Then select the "Save to My Recipes" button and it will be added.
    <br>
     <br>
-    You can even sort your recipes by type: Breakfast, Lunch, Snacks, Dinner, Desserts, Drinks, Other.
-    
-    
+
     <?
     // Connect to MySQL.    
     require ('../../mysqli_connect.php');
@@ -42,29 +42,12 @@ check_logged(); /// function checks if visitor is logged.
           } else{
             $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes WHERE category = '$cat' and users like '%$user_id%'";
           }
-          
+    //check if specific recipe is selected      
     if(!$rec == ''){
         $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes WHERE image_url = '$rec' and users like '%$user_id%'";
     }
 
     $r2 = @mysqli_query ($dbc, $q2);
-/*
-    $q1 = "select category from session where user_id = 1";
-    $r3 = @mysqli_query ($dbc, $q1);
-    $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes";
-     
-     if($r3){
-        $cat = mysqli_fetch_row($r3);
-        if(!($cat == '*')){
-             $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes WHERE category = '$cat'";
-          }
-     }
-     
-     $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes"; //WHERE category = '$cat'";        
-     $r2 = @mysqli_query ($dbc, $q2);
-     */
-     
-     $r2 = @mysqli_query ($dbc, $q2);
     $n = mysqli_num_rows($r2);
     //echo 'here';
      if ($n>1) { // If it ran OK, display the records.
@@ -91,6 +74,7 @@ check_logged(); /// function checks if visitor is logged.
         echo "<a href='$link'>Source</a>";
         }
      }
+     //if only one recipe selected, give option to add to grocery list
     if ($n == 1){
         $row = mysqli_fetch_row($r2);
         $name = "{$row[0]}";
@@ -122,7 +106,7 @@ check_logged(); /// function checks if visitor is logged.
         }
         
         $user_id = $_SESSION["logged"];
-        
+        //transfer text to grocery list
         if($_POST['submit']){
             
             $q3 = "SELECT list_text FROM list WHERE user_id = '$user_id'";
@@ -141,13 +125,10 @@ check_logged(); /// function checks if visitor is logged.
         }
         
     }
-     
-        //echo $cat;
 
         // Free up the resources.
         mysqli_free_result ($r2);
-
-    
+  
     ?>
     
 <?php include 'footer.php'; ?>

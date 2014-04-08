@@ -124,7 +124,7 @@
                 <a href="grocerylist.php">Grocery List</a>
             </li>
             <li>
-                <a href="tools.php">Tools</a>
+                <a href="tools.php">Get Inspired</a>
             </li>
     </div>
     

@@ -19,9 +19,45 @@ $('.datepicker').datepicker();
     
 <? require ('../../mysqli_connect.php'); ?>
 
-<?
+<p>Plan what meals you will make each night!</p>
+<form enctype="multipart/form-data" action="calendar.php" method="post">
+     
+    <p>Add one of your recipes to the calendar!</p>
+    
+    <p>Recipe: 
+                <?
+                    echo '<select name="recipe" id="recipe">';
+                    
+                    
+                    // Select the database:
+                    $q = "USE jetpack";    
+                    $r = @mysqli_query ($dbc, $q);
+    
+                    $user_id = $_SESSION["logged"];
+                    
+                    $q2 = "select * from recipes where users like '%$user_id%'";
+                    $r2 = @mysqli_query ($dbc, $q2);
+                    
+                    $n = mysqli_num_rows($r2);
+                        //echo 'here';
+                    if ($n>0) { // If it ran OK, display the records.
+                        //echo 'here2';
+                        while ($row = mysqli_fetch_row($r2)) {
+                            $x = $row[0];
+                            echo "<option value='$x'>$x</option>";
+							
+                        }
+                    }
+                echo  '</select>';
+                ?>
+                
+    <p>Date: <input type="text" id="datepicker" name="datepicker"></p>
+    <div align="center"><input type="submit" name="submit" value="Submit" /></div>
+    
+    </fieldset>
+</form>
 
-//require ('../../mysqli_connect.php');
+<?
     
 // Select the database:
 $q = "USE jetpack";    
@@ -81,24 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 
-
-
-
-
-
-
-
-//calendar code edited from from http://davidwalsh.name/php-event-calendar
-/*
-$events = array();
-$query = "SELECT event_name, DATE_FORMAT(event_date,'%Y-%m-%d') AS event_date FROM events WHERE event_date LIKE '$year-$month%' and title like '%$user_id%'";
-$result = @mysqli_query($dbc, $query) or die('cannot get results!zzzzz');
-while($row = mysqli_fetch_assoc($result)) {
-	$events[$row['event_date']][] = $row;
-}*/
-
-//$month = date("m");
-//$year = date("Y");
+//calendar code adapted from from http://davidwalsh.name/php-event-calendar
 
 /* draws a calendar */
 function draw_calendar($month,$year,$events = array(), $events2 = array()){
@@ -230,10 +249,6 @@ while($row = mysqli_fetch_row($result)) {
         $title = $row[0];
 	$events1[$key][] = $title;
         $events2[$title][] = $val;
-        //echo $key;
-        //echo $title;
-        //echo $val;
-        //echo 'noooo';
 }
 
 echo '<h2 style="float:left; padding-right:30px;">'.date('F',mktime(0,0,0,$month,1,$year)).' '.$year.'</h2>';
@@ -243,42 +258,7 @@ echo draw_calendar($month,$year,$events1, $events2);
 echo '<br /><br />';
 ?>
 
-<form enctype="multipart/form-data" action="calendar.php" method="post">
-     
-    <p>Add one of your recipes to the calendar!</p>
-    
-    <p>Recipe: 
-                <?
-                    echo '<select name="recipe" id="recipe">';
-                    
-                    
-                    // Select the database:
-                    $q = "USE jetpack";    
-                    $r = @mysqli_query ($dbc, $q);
-    
-                    $user_id = $_SESSION["logged"];
-                    
-                    $q2 = "select * from recipes where users like '%$user_id%'";
-                    $r2 = @mysqli_query ($dbc, $q2);
-                    
-                    $n = mysqli_num_rows($r2);
-                        //echo 'here';
-                    if ($n>0) { // If it ran OK, display the records.
-                        //echo 'here2';
-                        while ($row = mysqli_fetch_row($r2)) {
-                            $x = $row[0];
-                            echo "<option value='$x'>$x</option>";
-							
-                        }
-                    }
-                echo  '</select>';
-                ?>
-                
-    <p>Date: <input type="text" id="datepicker" name="datepicker"></p>
-    <div align="center"><input type="submit" name="submit" value="Submit" /></div>
-    
-    </fieldset>
-</form>
+
 
     
 <?php include 'footer.php'; ?>

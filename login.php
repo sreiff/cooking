@@ -19,14 +19,19 @@
             window.location.href = x;
         }
     </script>
+    <style>
+  img {
+    height: 200px;
+
+  }
+  </style>
 
 </head>
 <body>
      <div id="container">
 <?php # Script 9.5 - register.php #2
 // This script performs an INSERT query to add a record to the users table.
-$y = $_SESSION["logged"];
-//echo $y;
+
 $page_title = 'Log in';
 
 include("passwords.php");
@@ -70,8 +75,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         if ($n==1) { // If it ran OK.
             
-            
              $_SESSION["logged"]=$_POST['email'];
+             //$y = $_SESSION["logged"];
+            //echo $y;
             ?>
             <script type="text/javascript">
                 newDoc("home.php");
@@ -109,6 +115,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 } // End of the main Submit conditional.
 ?>
+<p>
+    This website is for finding new recipes, keeping track of them, <br>
+    planning your meals and grocery trips, as well as getting <br> inspired to cook. <br><br>
+    Join or log in to get started!
+</p>
+
+
 <h1>Log In</h1>
 <form action="login.php" method="post">
     <p>Email Address: <input type="text" name="email" size="20" maxlength="60" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"  /> </p>
@@ -119,6 +132,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <br>
     <br>
 
+    
+
+    <div id="images"></div>
+<div id="titles"></div>
+<div id="alts"></div>
+
+
+<script>
+(function() {
+  var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+  
+  $.getJSON( flickerAPI, {
+    tags: "foodie",
+    tagmode: "any",
+    format: "json"
+  })
+    .done(function( data ) {
+      $.each( data.items, function( i, item ) {
+      	$('#images').append('<p>');	
+        $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+    	$('#images').append('</p>');
+        if ( i === 0 ) {
+          return false;
+        }
+      });
+    });
+})();
+</script>  
 
     
 </body> 

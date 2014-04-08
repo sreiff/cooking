@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (in_array($_FILES['upload']['type'], $allowed)) {
         
             // Move the file over.
-            if (move_uploaded_file ($_FILES['upload']['tmp_name'], "images/{$_FILES['upload']['name']}")) {
+            if (move_uploaded_file ($_FILES['upload']['tmp_name'], "../../images/{$_FILES['upload']['name']}")) {
                 echo '<p><em>The file has been uploaded!</em></p>';
             } // End of move... IF.
             
@@ -172,13 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     <fieldset><legend>Select a JPEG or PNG image of 512KB or smaller to be uploaded:</legend>
     <p>Please name your file recipe_name.jpg</p>
-    <p><b>File:</b> <input type="file" name="upload" /></p>
-    
-    
-    
-    
-    
-    
+    <p><b>File:</b> <input type="file" name="upload" /></p>    
     <p>Recipe Name: <input type="text" name="rname" size="15" maxlength="20"/></p>
     <p>Ingredients: <textarea name="ingredients" rows="10" cols="40">  </textarea> </p>
     <p>Directions: <textarea name="directions" rows="12" cols="40"> </textarea> </p>

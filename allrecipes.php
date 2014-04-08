@@ -8,16 +8,13 @@ check_logged(); /// function checks if visitor is logged.
 $( "#button" ).button();
 </script>
 
-<div id="login"><a href="login.php">Login</a>
+
 <?php include 'header.php'; ?>
     
     
-   Here you will have the ability to look at all recipes.
-   <br>
-    <br>
-    You can even sort your recipes by type: Breakfast, Lunch, Snacks, Dinner, Desserts, Drinks, Other.
-    
-    
+    All recipes uploaded by users.
+   <br><br>
+
     <?
     session_start();
     // Connect to MySQL.    
@@ -38,9 +35,7 @@ $( "#button" ).button();
     // Assign the input value to a variable for easy reference
     $cat = $_REQUEST["category"];
     $rec = $_REQUEST["recipe"];
-    //echo $cat;
-    
-    
+   
     
     //Check if category if all, otherwise use input value
     if($cat == 'all' or $cat == ''){
@@ -48,16 +43,16 @@ $( "#button" ).button();
           } else{
             $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes WHERE category = '$cat'";
           }
-          
+    //check if a specific recipe is selected      
     if(!$rec == ''){
         $q2 = "SELECT name, image_url, ingredients, directions, source FROM recipes WHERE image_url = '$rec'";
     }
     
     $r2 = @mysqli_query ($dbc, $q2);
     $n = mysqli_num_rows($r2);
-    //echo 'here';
+ 
      if ($n>1) { // If it ran OK, display the records.
-        //echo 'here2';
+       
      while ($row = mysqli_fetch_row($r2)) {
         
         $name = "{$row[0]}";
@@ -80,6 +75,7 @@ $( "#button" ).button();
         echo "<a href='$link'>Source</a>";
         }
      }
+     //if there is only one recipe, add a button to save to recipes
     if ($n == 1){
         $row = mysqli_fetch_row($r2);
         $name = "{$row[0]}";
@@ -110,7 +106,7 @@ $( "#button" ).button();
         }
         
         $user_id = $_SESSION["logged"];
-        
+        //if added to recipes, add to database
         if($_POST['submit']){
             
             $q3 = "SELECT name, image_url, ingredients, directions, source FROM recipes WHERE users like '%$user_id%' and image_url = '$image'";
@@ -128,11 +124,7 @@ $( "#button" ).button();
     }
 
         // Free up the resources.
-        mysqli_free_result ($r2);
-        
-        
- 
-    
+        mysqli_free_result ($r2);    
     ?>
     
 <?php include 'footer.php'; ?>

@@ -26,8 +26,7 @@ if(!($_POST['submit'] == 'Save')){
  
 }
 
-//echo $type;
-
+//email the recipe
 if($type == 'email'){
 // Assign the input values to variables for easy reference
 
@@ -68,6 +67,7 @@ else{
         // Die with a success message
             die("<span class='success'>Success! Your grocery list has been sent.</span>");   
 }
+//save the list
 } else {
     $q2 = "select * FROM list WHERE user_id = '$user_id'";
     $r2 = @mysqli_query ($dbc, $q2);
@@ -98,9 +98,6 @@ else{
             echo "Sorry, you list could not be saved, please try again.";
         }
     }
-    
-    
-    
     
     
 }
@@ -177,8 +174,7 @@ function validEmail($email)
 
 ?>   
  </p>
-    
-     
+
    
     
 </body>
