@@ -82,18 +82,35 @@
         <br>
             <br>
                 <br>
-    hi this is for keeping track of recipeshghj
+
+<script>
     
-    <p>Date: <input id="datepicker" type="text"></p>
-    
-    
+function getRecipe() {
+    var params = {
+        'key': apiKey,
+        'rId': recipeId
+    }
+
+    var queryString = API_BASE_URL + API_GET_RECIPE_ENDPOINT;
+    var queryUrl = "http://food2fork.com/api/search?key=2af7ada032efa868f65c474f8b04c937";
+
+    var jqXHR = $.getJSON(queryUrl,
+        function (data) {
+            alert(JSON.stringify(data));
+        });
+
+
+    return jqXHR;
+}
+</script>  
+  
+  
+
+ 
+    haha
+    hello00
    
-    <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br>
-    
-    hi
-    
+
 <?php include 'footer.php'; ?>
     
 </body>

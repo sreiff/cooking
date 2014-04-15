@@ -22,8 +22,18 @@ include("passwords.php");
     $q = "USE jetpack";    
     $r = @mysqli_query ($dbc, $q);
     
+
+    
 // Check if the form has been submitted:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
+    // Clean up the input values
+    foreach($_POST as $key => $value) {
+        if(ini_get('magic_quotes_gpc'))
+            $_POST[$key] = stripslashes($_POST[$key]);
+ 
+            $_POST[$key] = htmlspecialchars(strip_tags($_POST[$key]));
+    }
     
     $category = $_POST['category'];
     
@@ -37,17 +47,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (in_array($_FILES['upload']['type'], $allowed)) {
         
             // Move the file over.
-            if (move_uploaded_file ($_FILES['upload']['tmp_name'], "../../images/{$_FILES['upload']['name']}")) {
-                echo '<p><em>The file has been uploaded!</em></p>';
+            if (move_uploaded_file ($_FILES['upload']['tmp_name'], "images/{$_FILES['upload']['name']}")) {
+                //echo '<p><em>The file has been uploaded!</em></p>';
             } // End of move... IF.
+            else{
+                $errors[] = 'Your file could not be uploaded, please try again.';
+            }
             
         } else { // Invalid type.
-            echo '<p class="error">Please upload a JPEG or PNG image.</p>';
+            $errors[] = 'Please upload a JPEG or PNG image.';
         }
 
     }// End of isset($_FILES['upload']) IF.
     
-    // Check for an email address:
+    // Check for a recipe name:
     if (empty($_POST['rname'])) {
         $errors[] = 'You forgot to enter a recipe name';
     } else {
@@ -55,30 +68,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $r = @mysqli_query ($dbc, $q);
         $n = mysqli_num_rows($r);
         if ($n < 1){
+            $rname = strip_tags($rname);
             $rname = mysqli_real_escape_string($dbc, trim($_POST['rname']));
         }else{
             $errors[] = 'The recipe already exists, please upload a new one.';
         }
     }
     
-    // Check for an email address:
+    // Check for ingredients:
     if (empty($_POST['ingredients'])) {
         $errors[] = 'You forgot to enter the ingredients';
     } else {
+        $ingredients = strip_tags($ingredients);
         $ingredients = mysqli_real_escape_string($dbc, trim($_POST['ingredients']));
     }
     
-    // Check for an email address:
+    // Check for directions:
     if (empty($_POST['directions'])) {
         $errors[] = 'You forgot to enter the directions';
     } else {
+        $directions = strip_tags($directions);
         $directions = mysqli_real_escape_string($dbc, trim($_POST['directions']));
     }
     
-     // Check for an email address:
+     // Check for source:
     if (empty($_POST['source'])) {
         $errors[] = 'You forgot to enter the source, enter "none" for none.';
     } else {
+        $source = strip_tags($source);
         $source = mysqli_real_escape_string($dbc, trim($_POST['source']));
     }
     
@@ -133,12 +150,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $r = @mysqli_query ($dbc, $q);
                
         if ($r) { // If it ran OK.
-            echo "success!";
+            echo "Success! Look at the recipe now under your recipes";
         } else { // If it did not run OK.
             
             // Public message:
             echo '<h1>System Error</h1>
-            <p class="error">You could not be registered due to a system error. We apologize for any inconvenience.</p>'; 
+            <p class="error">Your recipe could not be added due to a system error. We apologize for any inconvenience.</p>'; 
             
             // Debugging message:
            // echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q . '</p>';

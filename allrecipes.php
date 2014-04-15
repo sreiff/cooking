@@ -72,7 +72,10 @@ $( "#button" ).button();
         <br> <br> 
             <?
         $link = "{$row[4]}";
-        echo "<a href='$link'>Source</a>";
+        if($link != 'none'){
+            echo "<a href='$link'>Source</a>";
+        }
+        
         }
      }
      //if there is only one recipe, add a button to save to recipes
@@ -94,7 +97,10 @@ $( "#button" ).button();
         <br> <br> 
             <?
         $link = "{$row[4]}";
-        echo "<a href='$link'>Source</a>";
+        if($link != 'none'){
+            echo "<a href='$link'>Source</a>";
+        }
+        
         
         $x = $_SESSION["logged"];
         if (!($x == '0' or $x == '')) {

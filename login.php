@@ -84,11 +84,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </script>
             <?
             //header('Location: home.php');
-        } else { // If it did not run OK.
+        }
+        else if ($n == 0){
+            // Public message:
+            echo '<h1>System Error</h1>
+            <p class="error">The email-password combination did not work, please try again.</p>'; 
+            
+        }
+        else { // If it did not run OK.
             
             // Public message:
             echo '<h1>System Error</h1>
-            <p class="error">You could not be registered due to a system error. We apologize for any inconvenience.</p>'; 
+            <p class="error">You could not be logged in due to a system error. We apologize for any inconvenience.</p>'; 
             
             // Debugging message:
            // echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q . '</p>';

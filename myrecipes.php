@@ -71,7 +71,9 @@ check_logged(); /// function checks if visitor is logged.
         <br> <br> 
             <?
         $link = "{$row[4]}";
-        echo "<a href='$link'>Source</a>";
+        if($link != 'none'){
+            echo "<a href='$link'>Source</a>";
+        }
         }
      }
      //if only one recipe selected, give option to add to grocery list
@@ -94,7 +96,9 @@ check_logged(); /// function checks if visitor is logged.
         <br> <br> 
             <?
         $link = "{$row[4]}";
-        echo "<a href='$link'>Source</a>";
+        if($link != 'none'){
+            echo "<a href='$link'>Source</a>";
+        }
         
         $x = $_SESSION["logged"];
         if (!($x == '0' or $x == '')) {
