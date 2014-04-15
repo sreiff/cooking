@@ -12,7 +12,7 @@ $( "#button" ).button();
 <?php include 'header.php'; ?>
     
     
-    All recipes uploaded by users.
+    <i>All recipes uploaded by users.</i>
    <br><br>
 
     <?

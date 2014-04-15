@@ -19,7 +19,7 @@ $('.datepicker').datepicker();
     
 <? require ('../../mysqli_connect.php'); ?>
 
-<p>Plan what meals you will make each night!</p>
+<p>Plan what meals you will make each night! Or track what you have made in the past.</p>
 <form enctype="multipart/form-data" action="calendar.php" method="post">
      
     <p>Add one of your recipes to the calendar!</p>

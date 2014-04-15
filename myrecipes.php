@@ -7,10 +7,11 @@ check_logged(); /// function checks if visitor is logged.
     
 <?php include 'header.php'; ?>
     
-    
+   <i>
    Below are all of your saved recipes. <br><br>
    To save a recipe, find one you like under all recipes and select the title to display it alone. 
    Then select the "Save to My Recipes" button and it will be added.
+   </i> 
    <br>
     <br>
 

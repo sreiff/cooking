@@ -9,10 +9,10 @@ check_logged(); /// function checks if visitor is logged.
 
     
 Here you can add or edit your grocery list.
-<br><br>
+<br><br> <i>
 To add ingredients from one of your saved recipes to the grocery list, 
 select the title of the recipe in your recipes and select the 
-"Add Ingredients to Grocery List" button to move the ingredients over.
+"Add Ingredients to Grocery List" button to move the ingredients over.</i>
 <br>
     <br>
         <form id="grocerylist" action="groceryverification.php" method="post">

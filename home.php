@@ -13,8 +13,9 @@ check_logged(); /// function checks if visitor is logged.
     <br>
     <br>
     <br>
-    This will give you the ability to plan your meals,
-    find new recipes, create a grocery list and more. 
+    This website will give you the ability to plan your meals on a calendar,
+    find new recipes, create a grocery list, <br>
+    upload new recipes, save recipes and more all in one place!
     <br>
         <br>
             <a href="http://savannahreiff.com/cooking/Find_New_Recipes.xml">
